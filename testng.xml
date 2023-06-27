@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Suite" parallel="tests">
+	<parameter name="browser" value="fireFox" />
+	<listeners>
+		<listener class-name="listeners.ExtentListener" />
+	</listeners>
+
+	<test name="fireFox test">
+		<classes>
+			<class name="tests.MainRunnerTest"></class>
+		</classes>
+	</test>
+
+<!--	<parameter name="browser" value="Chrome" />-->
+<!--	<listeners>-->
+<!--		<listener class-name="listeners.ExtentListener" />-->
+<!--	</listeners>-->
+
+<!--	<test name="chrome test">-->
+<!--		<classes>-->
+<!--			<class name="tests.MainRunnerTest"></class>-->
+<!--		</classes>-->
+<!--	</test>-->
+
+</suite> 
