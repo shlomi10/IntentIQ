@@ -29,6 +29,11 @@ public class MainPage extends BasePageFunctions {
         return navigateToURL(site);
     }
 
+    // read site to load
+    public String readWebSite(String site) {
+        return readProperties(site);
+    }
+
     // navigate to bags
     public Boolean openBags() {
         waitForElementToBeVisible(gearMenu);

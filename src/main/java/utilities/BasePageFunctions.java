@@ -74,7 +74,7 @@ public abstract class BasePageFunctions {
     // navigate to URL
     public Boolean navigateToURL(String URL) {
         try {
-            driver.navigate().to(URL);
+            getDriver().navigate().to(URL);
             return true;
         } catch (Exception e) {
             System.out.println("Site was not loaded");
@@ -84,7 +84,7 @@ public abstract class BasePageFunctions {
 
     // get back webElement
     public WebElement getWebElement(By elem) {
-        return driver.findElement(elem);
+        return getDriver().findElement(elem);
     }
 
     // click on element
@@ -162,7 +162,7 @@ public abstract class BasePageFunctions {
 
     // move courser to element
     public boolean mouseHooverFromElement(By elem) {
-        action = new Actions(driver);
+        action = new Actions(getDriver());
         try {
             action.moveToElement(getWebElement(elem)).build().perform();
             return true;
@@ -174,7 +174,7 @@ public abstract class BasePageFunctions {
 
     // move courser to element and click on him
     public boolean mouseHooverFromElementToElementAndClick(By elem) {
-        action = new Actions(driver);
+        action = new Actions(getDriver());
         try {
             action.moveToElement(getWebElement(elem)).click().build().perform();
             return true;
@@ -188,7 +188,7 @@ public abstract class BasePageFunctions {
     public boolean scrollToElement(By elemToScroll) {
         try {
             WebElement element1 = getWebElement(elemToScroll);
-            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element1);
+            ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", element1);
             return true;
         } catch (Exception e) {
             System.out.println("Scroll to element was not worked correct");

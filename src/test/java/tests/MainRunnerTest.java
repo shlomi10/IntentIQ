@@ -2,8 +2,6 @@ package tests;
 
 import org.testng.Assert;
 import org.testng.annotations.*;
-import java.io.InputStream;
-import java.util.Properties;
 
 /**
  * this class represents the test runner
@@ -15,24 +13,9 @@ public class MainRunnerTest extends BaseTest {
 
     private String siteURL;
 
-    @BeforeMethod
-    public void beforeMethod() {
-        try {
-            // load properties
-            Properties props = new Properties();
-
-            String propFileName = "config.properties";
-            // get the config properties file
-            InputStream inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);
-            props.load(inputStream);
-            siteURL = props.getProperty("siteURL");
-        } catch (Exception e) {
-            System.out.println("There was problem load the properties file");
-        }
-    }
-
     @Test(priority = 1, description = "add bag to cart test")
     public void addBagTOCartFlow() {
+        siteURL = mainPage.readWebSite("siteURL");
         Assert.assertTrue(mainPage.getWebSite(siteURL), "site was not loaded");
         Assert.assertTrue(mainPage.openBags(), "bags menu was not opened");
         Assert.assertTrue(mainPage.addBagTOCart(),"item was not added to the cart");
